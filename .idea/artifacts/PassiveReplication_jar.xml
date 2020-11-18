@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PassiveReplication:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PassiveReplication_jar</output-path>
+    <root id="archive" name="PassiveReplication.jar">
+      <element id="module-output" name="PassiveReplication" />
+    </root>
+  </artifact>
+</component>
