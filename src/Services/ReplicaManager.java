@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 
 public class ReplicaManager implements Runnable {
 
+    //Classe que representa o replica manager, responsável pelo salvamento dos backups, cada replica manager possui sua thread.
+
     private final static String path = "C:\\Users\\Alexandre\\IdeaProjects\\PassiveReplication\\Backup\\";
 
     private String texto = FrontEnd.getInstance().getInput();
@@ -16,6 +18,7 @@ public class ReplicaManager implements Runnable {
     private Long pid = 0L;
     private String confirmacao = "";
 
+    // Método construtor
     public ReplicaManager(int id) {
         Thread thread = new Thread(this);
         this.pid = thread.getId();
@@ -23,6 +26,7 @@ public class ReplicaManager implements Runnable {
         thread.run();
     }
 
+    // Método mais importante do replica manager, onde ele cria o arquivo backup e realiza o salvamento do mesmo na pasta Backup do diretório especificado
     private void salvarBackup() throws IOException {
         FileWriter arquivo = new FileWriter(path + nomeArquivo + ".txt", true);
         File file = new File(path + this.nomeArquivo + ".txt");
@@ -36,6 +40,8 @@ public class ReplicaManager implements Runnable {
         this.confirmacao =  "ReplicaManager " + pid + " confirma o salvamento de backup";
     }
 
+
+    // Método override da thread, resposável pelo start.
     @Override
     public void run() {
         try {
@@ -45,6 +51,7 @@ public class ReplicaManager implements Runnable {
         }
     }
 
+    // Getter da confirmação do salvamento do arquivo
     public String getConfirmacao() {
         return confirmacao;
     }
